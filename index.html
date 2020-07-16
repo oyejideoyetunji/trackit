@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <title>Things To do</title>
+</head>
+<body class="bg-white">
+<div class="container bg-white">
+  <header class="row bg-blue-var">
+    <h1 class="hdr-ctr">Things to do</h1>
+    <div class="row flex-row">
+      <h3 class="col-2 title-lft tab"><span id="todo-tab">Todo</span></h3>
+      <h3 class="col-2 title-rt tab"><span id="done-tab">Done</span></h3>
+    </div>
+  </header>
+
+  <div id="add-todo-block" class="row hidden">
+    <form name="todo-frm" id="todo-form" class="frm-blck" action="#">
+      <div class="frm-wrp">
+        <h4 class="hdr-ctr">Add a new Todo and date</h4>
+      </div>
+      <div class="frm-wrp">
+        <input type="text" name="title" placeholder="Title" required>
+      </div>
+      <div class="frm-wrp">
+        <input type="date" name="date" placeholder="On/Before" required>
+      </div>
+      <div class="card-block">
+        <button class="frm-btn bg-blue-var tab" type="reset">Cancel</button>
+        <button class="frm-btn bg-blue-var tab" type="submit">Done</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="row">
+    <div id="todo-table-wrp" class="table-wrp hidden">
+      <div id="todo-table" class="table-blck">
+        <!--Dynamic table rows-->
+      </div>
+      <div id="add-todo-tab" class="btn-tab hdr-ctr tab">Add new Todo</div>
+    </div>
+
+    <div id="done-table-wrp" class="table-wrp hidden">
+      <table id="done-table" class="table-blck">
+        <!--Dynamic table rows-->
+      </table>
+      <div id="done-staus" class="hdr-ctr hidden">You have no completed Todo</div>
+    </div>
+  </div>
+</div>
+
+<script src="/script.js"></script>
+
+</body>
+</html>
