@@ -100,7 +100,7 @@ header{
 }
 
 .table-blck>div, .btn-tab{
-  width: 350px;
+  width: 380px;
   margin: 12px auto;
   padding: 12px;
   border: 1px solid rgba(0, 144, 255, 0.5);
@@ -164,6 +164,7 @@ button.frm-btn{
 @media only screen and (max-width: 500px){
   .container{
     width: 96%;
+    margin: 0 auto 40px;
   }
 
 }
