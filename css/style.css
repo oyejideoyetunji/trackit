@@ -41,8 +41,8 @@ body{
 
 .container{
   width: 400px;
-  min-height: 600px;
-  margin: 40px auto;
+  min-height: 90vh;
+  margin: 4.9vh auto;
   box-shadow: 10px 10px 16px #d6d6d6;
   border: 1px solid rgba(0, 144, 255, 0.4);
   border-radius: 8px;
@@ -111,17 +111,18 @@ header{
   box-shadow: 10px 10px 18px #d6d6d6;
 }
 
+.table-blck>div>p{
+  width: 100%;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  margin: 8px 0;
+}
+
 .table-blck>div>p>button{
   border: none;
   outline: none;
-  padding: 4px 8px;
-}
-
-.table-blck>div>p{
-  width: 100%;
-  margin: 8px 0;
-  overflow-x: hidden;
-  word-wrap: break-word;
+  margin: 12px 18px;
+  padding: 4px 18px;
 }
 
 .frm-blck{
@@ -164,7 +165,8 @@ button.frm-btn{
 @media only screen and (max-width: 500px){
   .container{
     width: 96%;
-    margin: 0 auto 40px;
+    min-height: 90vh;
+    margin: 10px auto 20px;
   }
 
 }
@@ -172,5 +174,9 @@ button.frm-btn{
 @media only screen and (max-width: 400px){
   .table-blck>div, .btn-tab{
     max-width: 300px;
+  }
+
+  .table-blck>div>p>button{
+    margin: 12px 8px;
   }
 }
