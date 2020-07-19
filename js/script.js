@@ -9,19 +9,19 @@ const todoDate = todoForm['date'];
 const todoTab = document.getElementById('todo-tab');
 const doneTab = document.getElementById('done-tab');
 const addTodoTab = document.getElementById('add-todo-tab');
-// const submitButton = document.getElementById('submit-btn');
+
 
 const todoTableBlock = document.getElementById('todo-table-wrp');
 const todoTable = document.getElementById('todo-table');
 const doneTableBlock = document.getElementById('done-table-wrp');
 const doneTable = document.getElementById('done-table');
 const addTodoBlock = document.getElementById('add-todo-block');
-// const formButtonBlock = document.getElementById('frm-btn-blck');
 const doneStatusBar = document.getElementById('done-staus');
 
 
 let todoListArray = [];
 let doneListArray = [];
+let todoToUpdate = null;
 
 window.onload = function(){
     todoTableBlock.style.display = 'table';
@@ -44,7 +44,6 @@ todoForm.addEventListener('submit', (event)=>{
     getTodoData();
     resetTodoFormValues();
     createTodoTable();
-    showTodoList();
 });
 
 
@@ -55,12 +54,16 @@ function showAddTodoBlock(){
 }
 
 function showTodoList(){
-    doneTableBlock.style.display = 'none'
+    todoToUpdate = null;
+    todoForm.removeEventListener('submit', removeFormerVersionOfTodo);
+    doneTableBlock.style.display = 'none';
     addTodoBlock.style.display = 'none';
     todoTableBlock.style.display = 'table';
 }
 
 function showDoneList(){
+    todoToUpdate = null;
+    todoForm.removeEventListener('submit', removeFormerVersionOfTodo);
     todoTableBlock.style.display = 'none';
     addTodoBlock.style.display = 'none';
     doneTableBlock.style.display = 'table';
@@ -93,6 +96,12 @@ function getTodoData(){
 function resetTodoFormValues(){
     todoTitle.value = "";
     todoDate.value = "";
+}
+
+function removeFormerVersionOfTodo(event){
+    todoListArray.splice(todoListArray.indexOf(todoToUpdate), 1);
+    createTodoTable();
+    event.currentTarget.removeEventListener(event.type, removeFormerVersionOfTodo);
 }
 
 function createDoneTable(){
@@ -168,16 +177,16 @@ function createTodoTable(){
         btn1.addEventListener('click', (event)=>{
             todoTitle.value = todoData.title;
             todoDate.value = todoData.date;
-            // let updateButton = document.createElement('button');
+            todoToUpdate = todoData;
             showAddTodoBlock();
-            todoListArray.splice(todoListArray.indexOf(todoData), 1);
+            todoForm.addEventListener('submit', removeFormerVersionOfTodo);
         })
 
         btn2.addEventListener('click', (event)=>{
             doneListArray.push(todoData);
             todoListArray.splice(todoListArray.indexOf(todoData), 1);
             row.parentNode.removeChild(row);
-            createDoneTable()
+            createDoneTable();
         });
     });
 }
