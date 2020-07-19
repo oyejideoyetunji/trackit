@@ -16,7 +16,8 @@ const todoTable = document.getElementById('todo-table');
 const doneTableBlock = document.getElementById('done-table-wrp');
 const doneTable = document.getElementById('done-table');
 const addTodoBlock = document.getElementById('add-todo-block');
-const doneStatusBar = document.getElementById('done-staus');
+const doneStatusBar = document.getElementById('done-status');
+const errorStatusBar = document.getElementById('error-status');
 
 
 let todoListArray = [];
@@ -42,13 +43,19 @@ addTodoTab.addEventListener('click', (event)=>{
 todoForm.addEventListener('submit', (event)=>{
     event.preventDefault();
     getTodoData();
+    if(errorStatusBar.innerText !== '') return;
     resetTodoFormValues();
     createTodoTable();
+});
+
+todoForm.addEventListener('reset', (event) => {
+    errorStatusBar.innerText = ''
 });
 
 
 
 function showAddTodoBlock(){
+    errorStatusBar.innerText = '';
     addTodoBlock.style.display = 'block';
     todoTableBlock.style.display = 'none';
 }
@@ -83,12 +90,13 @@ function hasDuplicate(element, array){
 }
 
 function getTodoData(){
+    errorStatusBar.innerText = '';
     let todoObj = {};
     if(todoTitle.value == '' || todoDate.value == '') return;
     todoObj.title = todoTitle.value;
     todoObj.date = todoDate.value;
     hasDuplicate(todoObj, todoListArray) ?
-        alert("Todo already exist") :
+        errorStatusBar.innerText = "Todo already exist" :
         todoListArray.push(todoObj);
     return
 }
@@ -159,7 +167,7 @@ function createTodoTable(){
 
         let txt1 = document.createTextNode(todoData.title);
         let txt2 = document.createTextNode(`On/Before: ${todoData.date}`);
-        let txt3 = document.createTextNode('edit Todo');
+        let txt3 = document.createTextNode('update Todo');
         let txt4 = document.createTextNode('move to completed');
 
         p1.appendChild(txt1);

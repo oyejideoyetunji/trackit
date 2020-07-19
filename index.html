@@ -20,6 +20,7 @@
     <form name="todo-frm" id="todo-form" class="frm-blck" action="#">
       <div class="frm-wrp">
         <h4 class="hdr-ctr">Add a new Todo and date</h4>
+        <p id="error-status" class="error-ctr"></p>
       </div>
       <div class="frm-wrp">
         <input type="text" name="title" placeholder="Title" required>
@@ -28,7 +29,7 @@
         <input type="date" name="date" placeholder="On/Before" required>
       </div>
       <div id="frm-btn-blck"class="card-block">
-        <button class="frm-btn bg-blue-var tab" type="reset">Cancel</button>
+        <button class="frm-btn bg-blue-var tab" type="reset">Reset</button>
         <button id="submit-btn" class="frm-btn bg-blue-var tab" type="submit">Submit</button>
       </div>
     </form>
@@ -46,7 +47,7 @@
       <table id="done-table" class="table-blck">
         <!--Dynamic table rows-->
       </table>
-      <div id="done-staus" class="hdr-ctr hidden">You have no completed Todo</div>
+      <div id="done-status" class="hdr-ctr hidden">You have no completed Todo</div>
     </div>
   </div>
 </div>

@@ -20,6 +20,11 @@
   display: none;
 }
 
+.error-ctr{
+  text-align: center;
+  color: rgb(245, 89, 89);
+}
+
 .tab{
   cursor: pointer;
 }
@@ -121,8 +126,8 @@ header{
 .table-blck>div>p>button{
   border: none;
   outline: none;
-  margin: 12px 18px;
-  padding: 4px 18px;
+  margin: 12px 8px;
+  padding: 4px 10px;
 }
 
 .frm-blck{
